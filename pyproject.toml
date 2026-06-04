@@ -25,6 +25,11 @@ dependencies = [
     "google-auth-oauthlib>=1.1.0",
     "google-auth-httplib2>=0.1.1",
     "rich>=13.0.0",
+    # Pin the transitive requests to the version baked into the runtime base
+    # image (Debian python3-requests 2.32.3). Without this, the loose Google
+    # lib floors resolve requests to a newer PyPI release, and pip cannot
+    # uninstall the Debian-managed copy (no RECORD file) -> image build fails.
+    "requests==2.32.3",
 ]
 
 [project.optional-dependencies]
