@@ -8,6 +8,7 @@ from gsc_cli import __version__
 from gsc_cli.auth.commands import app as auth_app
 from gsc_cli.inspect.commands import inspect_url
 from gsc_cli.query.commands import query
+from gsc_cli.sitemaps.commands import app as sitemaps_app
 from gsc_cli.sites.commands import app as sites_app
 
 app = typer.Typer(
@@ -18,6 +19,7 @@ app = typer.Typer(
 
 app.add_typer(auth_app, name="auth")
 app.add_typer(sites_app, name="sites")
+app.add_typer(sitemaps_app, name="sitemaps")
 app.command("query")(query)
 app.command("inspect")(inspect_url)
 

@@ -11,7 +11,7 @@ runner = CliRunner()
 def test_version():
     result = runner.invoke(app, ["--version"])
     assert result.exit_code == 0
-    assert "0.1.0" in result.output
+    assert "0.2.0" in result.output
 
 
 def test_help():
@@ -21,6 +21,7 @@ def test_help():
     assert "inspect" in result.output
     assert "auth" in result.output
     assert "sites" in result.output
+    assert "sitemaps" in result.output
 
 
 def test_query_help():
@@ -52,5 +53,18 @@ def test_sites_help():
 
 def test_inspect_help():
     result = runner.invoke(app, ["inspect", "--help"])
+    assert result.exit_code == 0
+    assert "--site" in result.output
+
+
+def test_sitemaps_help():
+    result = runner.invoke(app, ["sitemaps", "--help"])
+    assert result.exit_code == 0
+    for sub in ("list", "get", "submit", "delete"):
+        assert sub in result.output
+
+
+def test_sitemaps_submit_help():
+    result = runner.invoke(app, ["sitemaps", "submit", "--help"])
     assert result.exit_code == 0
     assert "--site" in result.output

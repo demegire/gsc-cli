@@ -1,6 +1,6 @@
 [project]
 name = "gsc-cli"
-version = "0.1.0"
+version = "0.2.0"
 description = "Agent-first CLI for Google Search Console SEO analytics"
 readme = "README.md"
 license = "MIT"
